@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>File Upload Demo</title>
+    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+
+    <script type="text/javascript" src="app.module.js"></script>
+    <script type="text/javascript" src="controllers.js"></script>
+    <script type="text/javascript" src="directives.js"></script>
+    <script type="text/javascript" src="services.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .bg-orange {
+            background-color: orange;
+        }
+        .navbar-brand.text-white {
+            color: white;
+            font-weight: bold;
+        }
+        .btn-orange {
+            background-color: orange;
+            color: white;
+        }
+        .center-top-content {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 10vh;
+            padding-top: 10px;
+        }
+        .bottom-center-box {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: white;
+            padding: 15px;
+            border-top: 1px solid #ddd;
+            box-shadow: 0px -2px 6px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            width: calc(100% - 80px);
+            max-width: 400px;
+        }
+        .navbar-fixed-top {
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+        .custom-panel {
+            border: 1px solid orange;
+            display: inline-block;
+            float: left;
+            margin-right: 30px;
+        }
+        .custom-panelRight {
+            border: 1px solid grey;
+            display: inline-block;
+            float: right;
+            margin-left: 30px;
+        }
+
+        .custom-text {
+        font-weight: bold; 
+        color: orange; 
+        }
+        .custom-textRight {
+        font-weight: bold; 
+        color: grey; 
+        }
+    </style>
+
+</head>
+<body ng-controller="FileUploadController" style="padding-top: 100px; padding-bottom: 100px;">
+    <nav class="navbar navbar-default p-3 mb-2 bg-orange text-white navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand text-white">EXL Document Processor</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid" ng-hide="toggle">
+        <div class="row center-top-content">
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Ask query here..." ng-model="placeId">
+                                <span class="input-group-btn">
+                                    <button ng-click="ask(placeId)" class="btn btn-orange" type="button">Send</button>
+                                </span>
+                            </div>
+                            <h3 class="custom-text" style="text-align: center;">Or Upload your own file</h5>
+                            <div>
+                                <div class="form-group">
+                                    <label for="myFileField">Select a file: </label>
+                                    <input type="file" demo-file-model="myFile" class="form-control" id="myFileField"/>
+                                </div>
+                                <button ng-click="uploadFile()" class="btn btn-orange" ng-hide="!isLoading">Upload File</button>
+                                <button ng-hide="isLoading" class="btn btn-orange" ng-hide="">Loading......</button>
+                                <div>{{serverResponse}}</div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="page-content-wrapper">
+
+        <div id="page-content-wrapper">
+        <div class="container-fluid" ng-repeat="data in conversation" style="padding-left: 250px; padding-right: 250px;">
+                <div class="panel panel-default custom-panel" ng-if="data.id%2==0">
+                    <div class="panel-body">
+                      <span class="custom-text">{{data.value}}</span>
+                    </div>
+                </div>
+                <div class="panel panel-default custom-panelRight" ng-if="data.id%2==1">
+                    <div class="panel-body">
+                      <span class="custom-textRight">{{data.value}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+    <div class="container" ng-hide="!toggle">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center">
+                <div class="bottom-center-box">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Ask query here..." ng-model="placeId">
+                        <span class="input-group-btn">
+                            <button ng-click="ask(placeId)" class="btn btn-orange" type="button">Send</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
