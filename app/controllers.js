@@ -12,7 +12,7 @@
             $scope.toggle=true;
             var temp={id: index++,value: question};
             $scope.conversation.push(temp);
-            var uploadUrl = "../server/service.php"; //Url of upload
+            var uploadUrl = "localhost/askQuestion?"; //Url of askQuestion
             $http({
                 method: 'POST',
                 url: uploadUrl,
@@ -34,7 +34,7 @@
         $scope.uploadFile = function () {
             var file = $scope.myFile;
             $scope.isLoading=true;
-            var uploadUrl = "../server/service.php", //Url of upload
+            var uploadUrl = "localhost/upload?", //Url for upload
                 promise = fileUploadService.uploadFileToUrl(file, uploadUrl);
 
             promise.then(function (response) {
