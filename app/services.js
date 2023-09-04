@@ -3,9 +3,9 @@
     var myApp = angular.module('app');
     myApp.service('fileUploadService', function ($http, $q) {
 
-        this.uploadFileToUrl = function (file, uploadUrl) {
+        this.uploadFileToUrl = function (files, uploadUrl) {
             var fileFormData = new FormData();
-            fileFormData.append('file', file);
+            fileFormData.append('files', files);
 
             var deffered = $q.defer();
             $http.post(uploadUrl, fileFormData, {

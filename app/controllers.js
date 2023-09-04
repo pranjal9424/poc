@@ -8,15 +8,15 @@
         var index=1;
         
         $scope.conversation=[];
-          $scope.ask = function (question) {
+          $scope.ask = function (questions) {
             $scope.toggle=true;
-            var temp={id: index++,value: question};
+            var temp={id: index++,value: questions};
             $scope.conversation.push(temp);
-            var uploadUrl = "localhost/askQuestion?"; //Url of askQuestion
+            var uploadUrl = "lhttp://127.0.0.1:5000/askQuestion?"; //Url of askQuestion
             $http({
                 method: 'POST',
                 url: uploadUrl,
-                data: {'question': question}
+                data: {'questions': questions}
             })
             .then(function successCallback(response) {
                 if(response.answer  !== null){
@@ -32,10 +32,10 @@
             })
         };
         $scope.uploadFile = function () {
-            var file = $scope.myFile;
+            var files = $scope.myFile;
             $scope.isLoading=true;
-            var uploadUrl = "localhost/upload?", //Url for upload
-                promise = fileUploadService.uploadFileToUrl(file, uploadUrl);
+            var uploadUrl = "http://127.0.0.1:5000/upload", //Url for upload
+                promise = fileUploadService.uploadFileToUrl(files, uploadUrl);
 
             promise.then(function (response) {
                 if(response.result="Files upload successfully!"){
