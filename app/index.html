@@ -13,67 +13,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/styles.css">
-    <style>
-        .bg-orange {
-            background-color: orange;
-        }
-        .navbar-brand.text-white {
-            color: white;
-            font-weight: bold;
-        }
-        .btn-orange {
-            background-color: orange;
-            color: white;
-        }
-        .center-top-content {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 10vh;
-            padding-top: 10px;
-        }
-        .bottom-center-box {
-            position: fixed;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: white;
-            padding: 15px;
-            border-top: 1px solid #ddd;
-            box-shadow: 0px -2px 6px rgba(0, 0, 0, 0.1);
-            z-index: 999;
-            width: calc(100% - 80px);
-            max-width: 400px;
-        }
-        .navbar-fixed-top {
-            position: fixed;
-            top: 0;
-            width: 100%;
-        }
-        .custom-panel {
-            border: 1px solid orange;
-            display: inline-block;
-            float: left;
-            margin-right: 30px;
-        }
-        .custom-panelRight {
-            border: 1px solid grey;
-            display: inline-block;
-            float: right;
-            margin-left: 30px;
-        }
-
-        .custom-text {
-        font-weight: bold; 
-        color: orange; 
-        }
-        .custom-textRight {
-        font-weight: bold; 
-        color: grey; 
-        }
-    </style>
-
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body ng-controller="FileUploadController" style="padding-top: 100px; padding-bottom: 100px;">
     <nav class="navbar navbar-default p-3 mb-2 bg-orange text-white navbar-fixed-top">
@@ -96,7 +36,15 @@
                                 </span>
                             </div>
                             <h3 class="custom-text" style="text-align: center;">Or Upload your own file</h5>
-                            <div>
+                                
+                                   <div class="center-container">
+                                        <label class="toggle-switch">
+                                            <input type="checkbox">
+                                            <span ng-click="switchSlide()" class="toggle-slider"></span>
+                                        </label>
+                                    </div>
+                                
+                            <div ng-if="slide">
                                 <div class="form-group">
                                     <label for="myFileField">Select a file: </label>
                                     <input type="file" demo-file-model="myFile" class="form-control" id="myFileField"/>
@@ -137,6 +85,12 @@
                         <input type="text" class="form-control" placeholder="Ask query here..." ng-model="placeId">
                         <span class="input-group-btn">
                             <button ng-click="ask(placeId)" class="btn btn-orange" type="button">Send</button>
+                        </span>
+                        <span style="margin-top: 10px;">
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span ng-click="frontSwitchSlide()" class="toggle-slider"></span>
+                            </label>
                         </span>
                     </div>
                 </div>

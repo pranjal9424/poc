@@ -1,0 +1,104 @@
+.bg-orange {
+    background-color: orange;
+}
+.navbar-brand.text-white {
+    color: white;
+    font-weight: bold;
+}
+.btn-orange {
+    background-color: orange;
+    color: white;
+}
+.center-top-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 10vh;
+    padding-top: 10px;
+}
+.bottom-center-box {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    padding: 15px;
+    border-top: 1px solid #ddd;
+    box-shadow: 0px -2px 6px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    width: calc(100% - 80px);
+    max-width: 500px;
+}
+.navbar-fixed-top {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.custom-panel {
+    border: 1px solid orange;
+    display: inline-block;
+    float: left;
+    margin-right: 30px;
+}
+.custom-panelRight {
+    border: 1px solid grey;
+    display: inline-block;
+    float: right;
+    margin-left: 30px;
+}
+
+.custom-text {
+font-weight: bold; 
+color: orange; 
+}
+.custom-textRight {
+font-weight: bold; 
+color: grey; 
+}
+.toggle-switch {
+    width: 60px;
+    height: 34px;
+    position: relative;
+}
+
+.toggle-switch input[type="checkbox"] {
+    display: none;
+}
+
+.toggle-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 34px;
+    cursor: pointer;
+    transition: background-color 0.4s;
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.4s;
+}
+
+.toggle-switch input[type="checkbox"]:checked + .toggle-slider {
+    background-color: orange;
+}
+
+.toggle-switch input[type="checkbox"]:checked + .toggle-slider:before {
+    transform: translateX(26px);
+}
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     /* Center vertically within the viewport */
+}

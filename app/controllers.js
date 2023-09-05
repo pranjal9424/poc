@@ -3,11 +3,27 @@
     var myApp = angular.module('app');
     
     myApp.controller('FileUploadController', function ($scope, fileUploadService,$http) {
+        $scope.conversation=[];
         $scope.isLoading=true;
         $scope.toggle=false;
         var index=1;
+        $scope.slide=false;
+        $scope.frontSlide=false;
+
+        $scope.frontSwitchSlide = function (){
+            $scope.toggle=false;
+            $scope.conversation=[];
+        };
+
+        $scope.switchSlide = function (){
+            if($scope.slide){
+                $scope.slide=false;
+            }else{
+                $scope.slide=true;
+            }
+        };
         
-        $scope.conversation=[];
+        
           $scope.ask = function (questions) {
             $scope.toggle=true;
             var temp={id: index++,value: questions};
